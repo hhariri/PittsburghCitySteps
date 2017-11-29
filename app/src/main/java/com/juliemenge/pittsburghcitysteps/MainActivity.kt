@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity() {
                         val step = Step(jsonStep.getString("neighborhood"), jsonStep.getString("name")
                         , jsonStep.getString("material"), jsonStep.getInt("length")) //create a new step object
                         stepList.add(step)
-                        Log.d(javaClass.simpleName, "Number: " + i + ", Neighborhood: " + step.neighborhood + ", Name: " + step.name + ", Material: " + step.material + ", Length: " + step.length)
+                        // Review: String template
+                        Log.d(javaClass.simpleName, "Number: $i, Neighborhood: ${step.neighborhood}, Name: ${step.name}, Material: ${step.material}, Length: ${step.length}")
                     }
 
                     //set up the recyclerview to display list of steps
