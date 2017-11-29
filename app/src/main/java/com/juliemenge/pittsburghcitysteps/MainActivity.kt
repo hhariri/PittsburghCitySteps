@@ -46,26 +46,7 @@ class MainActivity : AppCompatActivity() {
                 async(UI) {
                     val network = NetworkApi()
                     val data = bg { network.getDataFromServer(neighborhood) } //make network call and pass in user selected neighborhood
-                    val usableData = data.await()
-
-                    val allthedata = JSONObject(usableData) //get one giant blob of json data
-                    val result = allthedata.getJSONObject("result") //create a json blob of just the result data
-                    val records = result.getJSONArray("records") //get an array of the steps records
-
-                    val arraySize = records.length() //size of the arraylist to store steps
-
-                    val stepList = ArrayList<Step>(arraySize) //empty arraylist where steps will be stored
-
-                    //iterate through json data and create arraylist of steps objects
-                    for (i in 0 until arraySize) {
-                        val jsonStep = records.getJSONObject(i) //do stuff with the first step
-                        // Review: Initialise property on constructing class (avoids nulls and mutability)
-                        val step = Step(jsonStep.getString("neighborhood"), jsonStep.getString("name")
-                        , jsonStep.getString("material"), jsonStep.getInt("length")) //create a new step object
-                        stepList.add(step)
-                        // Review: String template
-                        Log.d(javaClass.simpleName, "Number: $i, Neighborhood: ${step.neighborhood}, Name: ${step.name}, Material: ${step.material}, Length: ${step.length}")
-                    }
+                    val stepList = data.await()
 
                     //set up the recyclerview to display list of steps
                     val adapter = RecyclerAdapter(stepList)

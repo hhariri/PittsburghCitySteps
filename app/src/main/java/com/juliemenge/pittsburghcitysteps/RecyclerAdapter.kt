@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
-class RecyclerAdapter(val stepList: ArrayList<Step>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(val stepList: List<Step>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     //this method is returning the view for each item in the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
