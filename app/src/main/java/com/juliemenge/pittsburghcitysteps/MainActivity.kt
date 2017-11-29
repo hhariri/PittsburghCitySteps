@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
                 async(UI) {
                     val network = NetworkApi()
                     val data = bg { network.getDataFromServer(neighborhood) } //make network call and pass in user selected neighborhood
-                    val useableData = data.await()
+                    val usableData = data.await()
 
-                    val allthedata = JSONObject(useableData) //get one giant blob of json data
+                    val allthedata = JSONObject(usableData) //get one giant blob of json data
                     val result = allthedata.getJSONObject("result") //create a json blob of just the result data
                     val records = result.getJSONArray("records") //get an array of the steps records
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     val stepList = ArrayList<Step>(arraySize) //empty arraylist where steps will be stored
 
                     //iterate through json data and create arraylist of steps objects
-                    for (i in 0..arraySize-1) {
+                    for (i in 0 until arraySize) {
                         val jsonStep = records.getJSONObject(i) //do stuff with the first step
                         // Review: Initialise property on constructing class (avoids nulls and mutability)
                         val step = Step(jsonStep.getString("neighborhood"), jsonStep.getString("name")
