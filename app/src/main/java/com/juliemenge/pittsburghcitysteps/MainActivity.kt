@@ -19,7 +19,7 @@ import android.widget.ArrayAdapter
 class MainActivity : AppCompatActivity() {
 
     //neighborhoods to choose from for spinner
-    val neighborhoods = arrayOf("Allentown", "Arlington", "Banksville", "Bedford Dwellings", "Beechview", "Beltzhoover", "Bloomfield", "Bluff", "Bon Air", "Brighton Heights", "Brookline", "California-Kirkbride", "Carrick", "Central Lawrenceville", "Central Northside", "Central Oakland", "Chartiers City", "Crafton Heights", "Crawford-Roberts", "Duquesne Heights", "East Allegheny", "East Carnegie", "East Hills", "Elliott", "Esplen", "Fineview", "Garfield", "Glen Hazel", "Greenfield", "Hazelwood", "Highland Park", "Homewood North", "Knoxville", "Larimer", "Lincoln-Lemington-Belmar", "Lincoln Place", "Lower Lawrenceville", "Marhsall-Shadeland", "Middle Hill", "Morningside", "Mount Oliver Borough", "Mount Washington", "Mt. Oliver", "North Oakland", "Oakwood", "Overbrook", "Perry North", "Perry South", "Point Breeze", "Polish Hill", "Ridgemont", "Shadyside", "Sheraden", "South Oakland", "South Side Flats", "South Side Slopes", "Spring Garden", "Spring Hill-City View", "Squirrel Hill North", "Squirrel Hill South", "Stanton Heights", "St. Clair", "Strip District", "Terrace Village", "Troy Hill", "Upper Hill", "Upper Lawrenceville", "West End", "West Oakland", "Westwood", "Windgap")
+    private val neighborhoods = arrayOf("Allentown", "Arlington", "Banksville", "Bedford Dwellings", "Beechview", "Beltzhoover", "Bloomfield", "Bluff", "Bon Air", "Brighton Heights", "Brookline", "California-Kirkbride", "Carrick", "Central Lawrenceville", "Central Northside", "Central Oakland", "Chartiers City", "Crafton Heights", "Crawford-Roberts", "Duquesne Heights", "East Allegheny", "East Carnegie", "East Hills", "Elliott", "Esplen", "Fineview", "Garfield", "Glen Hazel", "Greenfield", "Hazelwood", "Highland Park", "Homewood North", "Knoxville", "Larimer", "Lincoln-Lemington-Belmar", "Lincoln Place", "Lower Lawrenceville", "Marhsall-Shadeland", "Middle Hill", "Morningside", "Mount Oliver Borough", "Mount Washington", "Mt. Oliver", "North Oakland", "Oakwood", "Overbrook", "Perry North", "Perry South", "Point Breeze", "Polish Hill", "Ridgemont", "Shadyside", "Sheraden", "South Oakland", "South Side Flats", "South Side Slopes", "Spring Garden", "Spring Hill-City View", "Squirrel Hill North", "Squirrel Hill South", "Stanton Heights", "St. Clair", "Strip District", "Terrace Village", "Troy Hill", "Upper Hill", "Upper Lawrenceville", "West End", "West Oakland", "Westwood", "Windgap")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +76,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         //getting recyclerview from xml
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        // Review: Not needed. The Android extensions allow you reference components directly without needing findViewById
+        // val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
         //adding a layoutmanager
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
