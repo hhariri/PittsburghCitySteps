@@ -59,11 +59,9 @@ class MainActivity : AppCompatActivity() {
                     //iterate through json data and create arraylist of steps objects
                     for (i in 0..arraySize-1) {
                         val jsonStep = records.getJSONObject(i) //do stuff with the first step
-                        val step = Step() //create a new step object
-                        step.neighborhood = jsonStep.getString("neighborhood")
-                        step.name = jsonStep.getString("name")
-                        step.material = jsonStep.getString("material")
-                        step.length = jsonStep.getInt("length")
+                        // Review: Initialise property on constructing class (avoids nulls and mutability)
+                        val step = Step(jsonStep.getString("neighborhood"), jsonStep.getString("name")
+                        , jsonStep.getString("material"), jsonStep.getInt("length")) //create a new step object
                         stepList.add(step)
                         Log.d(javaClass.simpleName, "Number: " + i + ", Neighborhood: " + step.neighborhood + ", Name: " + step.name + ", Material: " + step.material + ", Length: " + step.length)
                     }
