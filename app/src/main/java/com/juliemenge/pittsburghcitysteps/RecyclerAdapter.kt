@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import kotlinx.android.synthetic.main.recyclerview_item_row.view.*
 
 class RecyclerAdapter(val stepList: ArrayList<Step>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
@@ -25,16 +26,12 @@ class RecyclerAdapter(val stepList: ArrayList<Step>) : RecyclerView.Adapter<Recy
 
     //the class is holding the list view
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         fun bindItems(step: Step) {
-            val textViewName = itemView.findViewById<TextView>(R.id.stepName)
-            val textViewNeighborhood  = itemView.findViewById<TextView>(R.id.stepNeighborhood)
-            val textViewMaterial  = itemView.findViewById<TextView>(R.id.stepMaterial)
-            val textViewLength  = itemView.findViewById<TextView>(R.id.stepLength)
-            textViewName.text = step.name
-            textViewNeighborhood.text = step.neighborhood
-            textViewMaterial.text = step.material
-            textViewLength.text = step.length.toString()
+            // Review: Use Android Extensions. No need for findViewById
+            itemView.stepName.text = step.name
+            itemView.stepNeighborhood.text = step.neighborhood
+            itemView.stepMaterial.text = step.material
+            itemView.stepLength.text = step.length.toString()
         }
     }
 }
