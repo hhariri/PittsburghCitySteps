@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val rawNeighborhoodChoice = neighborhoodSpinner.selectedItem.toString()
-                val neighborhood = "'" + rawNeighborhoodChoice + "'"
+                // Review: Use string templates
+                val neighborhood = "'${neighborhoodSpinner.selectedItem}'"
 
                 async(UI) {
                     val network = NetworkApi()
